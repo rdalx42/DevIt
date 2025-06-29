@@ -14,6 +14,13 @@ it's like reddit but focused a lot more on programming related topics.
 - Change your user description  
 - Browse topics (subreddits)
 - Minimalistic and intuitive UI
+
+## Languages
+ - php
+ - js
+ - css (not tailwind css)
+ - html (not even a real programming lang)
+
 Currently it's code needs a lot of refactoring.
 
 Here are some snapshots;
