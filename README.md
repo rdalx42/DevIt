@@ -4,16 +4,16 @@ A forum website.
 Devit is a simple forum website dedicated for programmers in general, 
 it's like reddit but focused a lot more on programming related topics.
 
-# Here are some of its the features:
+## Features
 
--User auth
--Create a topic (create a subreddit);
--Create a post on a topic
--Multiple themes.
--Like posts
--Change your user description
--Browse topics (subreddits)
-
+- User authentication  
+- Create a topic (create a subreddit)  
+- Create a post on a topic  
+- Multiple UI themes  
+- Like posts  
+- Change your user description  
+- Browse topics (subreddits)
+- Minimalistic and intuitive UI
 Currently it's code needs a lot of refactoring.
 
 Here are some snapshots;
