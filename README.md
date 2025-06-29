@@ -20,6 +20,7 @@ it's like reddit but focused a lot more on programming related topics.
 - Change your user description  
 - Browse topics (subreddits)
 - Minimalistic and intuitive UI
+- Notifications (for when post is liked)
 
 ## Languages
  - php
@@ -29,6 +30,11 @@ it's like reddit but focused a lot more on programming related topics.
  - SQL (for interacting with mysql db)
 
 Currently it's code needs a lot of refactoring.
+
+## Version F8D2 (Feature itteration 8 design itteration 2)
+ - Added notifications
+ - ![Screenshot 2025-06-29 113713](https://github.com/user-attachments/assets/9e500f29-1f33-46d6-a6ad-4a2fd2fc5a73)
+
 
 Here are some snapshots;
 ![Screenshot 2025-06-29 080627](https://github.com/user-attachments/assets/d5eeac6a-3868-4b96-9c4b-2ceb1bdc43f8)
@@ -43,5 +49,6 @@ Here are some snapshots;
 ![Screenshot 2025-06-29 080745](https://github.com/user-attachments/assets/7d4c174b-2bb6-4977-af71-1bdf7cdb48b0)
 ![Screenshot 2025-06-29 080751](https://github.com/user-attachments/assets/5f37245f-d138-46b5-865d-2238f2d018b2)
 ![Screenshot 2025-06-29 080616](https://github.com/user-attachments/assets/1137d915-dd66-4755-b7cb-414640fb0ff1)
+
 
 
