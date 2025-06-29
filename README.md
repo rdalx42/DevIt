@@ -1,7 +1,12 @@
 # DevIt
 A forum website.
 
-Devit is a simple forum website dedicated for programmers in general, 
+My first **big** project with php.
+Uses mysql as its data base.
+
+It's kinda badly organized.
+
+Devit is a simple and minimalistic forum website dedicated for programmers in general, 
 it's like reddit but focused a lot more on programming related topics.
 
 ## Features
@@ -20,6 +25,7 @@ it's like reddit but focused a lot more on programming related topics.
  - js
  - css (not tailwind css)
  - html (not even a real programming lang)
+ - SQL (for interacting with mysql db)
 
 Currently it's code needs a lot of refactoring.
 
