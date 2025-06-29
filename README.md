@@ -2,6 +2,7 @@
 A forum website.
 
 My first **big** project with php.
+It was made as a practice for a hackathon
 Uses mysql as its data base.
 
 It's kinda badly organized.
