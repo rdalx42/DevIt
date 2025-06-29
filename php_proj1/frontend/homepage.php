@@ -34,6 +34,10 @@ include("../php/db.php");
             <img src="../frontend/img/post.png" alt="Create Post" />
         </a>
 
+        <a href = "../php/notifications.php">
+            <img src = "../frontend/img/bellicon.png" alt = "Notifications">
+        </a>
+
         <a href="../php/index.php">
             <img src="../frontend/img/exit.png" alt="Logout" />
         </a>
@@ -197,8 +201,10 @@ include("../php/db.php");
                         $row = mysqli_fetch_assoc($creator_result);
                         $author_name = $row["creator"];
                         $author_nameESC = mysqli_real_escape_string($conn, $author_name);
-
-                        mysqli_query($conn, "UPDATE users SET likes = likes + 1 WHERE user = '$author_nameESC'");
+                        $likemsg = "Someone has liked your post";
+                        
+                        mysqli_query($conn, "UPDATE users SET likes = likes + 1 WHERE user = '$author_nameESC'"); 
+                        mysqli_query($com_conn, "INSERT INTO notifications (`user`, `content`, `subject`) VALUES ('$author_nameESC', '$likemsg', '" . $_SESSION["username"] . "')");
                     }
 
                     echo "Post liked successfully!<br>";
