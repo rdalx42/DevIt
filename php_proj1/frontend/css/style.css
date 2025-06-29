@@ -1,0 +1,485 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color:#000000;
+    --primary-color: #0066ff;
+    --secondary-color: #e0e0e0;
+    --card-bg: #f9f9f9;
+    --input-bg: #f0f0f0;
+    --input-hover: #dddddd;
+    --btn-hover: #0055cc;
+}
+
+.dark-theme {
+    --bg-color: #0a0a0a;
+    --text-color: #ffffff;
+    --primary-color: #2a7fff;
+    --secondary-color: #1e1e1e;
+    --card-bg: #0e0e0e;
+    --input-bg: #1e1e1e;
+    --input-hover: #4d4d4d;
+    --btn-hover: rgb(45, 45, 255);
+    --iv:1;
+}
+
+.light-theme{
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --primary-color: #2a7fff;
+    --secondary-color: #e1e1e1;
+    --card-bg: #cfcfcf;
+    --input-bg: #9f9f9f;
+    --input-hover: #4d4d4d;
+    --btn-hover: rgb(45, 45, 255);
+    --iv:0;
+}
+
+.discord-theme {
+    --bg-color: #2b2d31;           
+    --text-color: #ffffff;         
+    --primary-color: #5865f2;      
+    --secondary-color: #1e1f22;    
+    --card-bg: #313338;           
+    --input-bg: #383a40;           
+    --input-hover: #40444b;       
+    --btn-hover: #4752c4;  
+    --iv:1;       
+}
+
+
+#p{
+    height: 200px;
+}
+
+.gray-theme{
+    --bg-color: #454545;
+    --text-color:#ffffff;
+    --primary-color: #2a7fff;
+    --secondary-color: #5d5d5d;
+    --card-bg: #383737;
+    --input-bg: #c2c2c2;
+    --input-hover: #ffffff;
+    --btn-hover: rgb(45, 45, 255);
+    --iv:1;
+}
+
+.solarized-dark-theme {
+    --bg-color: #002b36;
+    --text-color: #000000;
+    --primary-color: #268bd2;
+    --secondary-color: #073642;
+    --card-bg: #073642;
+    --input-bg: #586e75;
+    --input-hover: #657b83;
+    --btn-hover: #2aa198;
+    --iv:1;
+}
+
+
+
+.pastel-theme {
+    --bg-color: #f7fafc;
+    --text-color: #34495e;
+    --primary-color: #a29bfe;
+    --secondary-color: #dfe6e9;
+    --card-bg: #dfe6e9;
+    --input-bg: #f0f4f8;
+    --input-hover: #c8d6e5;
+    --btn-hover: #6c5ce7;
+    --iv:0;
+}
+
+.cyberpunk-theme {
+    --bg-color: #0d0d0d;
+    --text-color: #00fff7;
+    --primary-color: #ff00c8;
+    --secondary-color: #1a1a1a;
+    --card-bg: #1a1a1a;
+    --input-bg: #2a2a2a;
+    --input-hover: #ff00c8;
+    --btn-hover: #00fff7;
+    --iv:1;
+}
+
+.reddit-theme {
+    --bg-color: #ffffff;            
+    --text-color: #1c1c1c;         
+    --primary-color: #ff4500;     
+    --secondary-color: #f6f7f8;    
+    --card-bg: #ffffff;            
+    --input-bg: #f6f7f8;           
+    --input-hover: #e1e3e6;         
+    --btn-hover: #ff5700; 
+    --iv:0;          
+}
+
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* ----------------------------- */
+/* Components                    */
+/* ----------------------------- */
+
+.user-display {
+    background-color: var(--card-bg);
+    border: 1px solid var(--input-hover);
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.user-display:hover {
+    background-color: var(--input-hover);
+}
+
+.user-display .username {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.user-display .descdisplay {
+    background-color: var(--bg-color);
+    font-size: 10px;
+    line-height: 1.2;
+    max-height: 2.4em; /* Approx height for 2 lines at line-height 1.2 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* allows wrapping */
+}
+
+.usernameframe {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    font-size: 40px;
+    padding: 20px 20px 20px 20px;
+    margin-top: 0px;
+}
+
+.like_class{
+    background-color: var(--secondary-color);
+    color:var(--text-color);
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+    margin-left: 68.5%;
+}
+
+.like_class2{
+    background-color: var(--secondary-color);
+    color:var(--text-color);
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+    margin-left: 80.5%;
+}
+
+#desc {
+    height:200px;
+    width:100%;
+}
+
+.user-display .likes {
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+.authform {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 400px;
+    background-color: var(--card-bg);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+   
+}
+
+.form_button_important {
+    width: 80%;
+    height: 45px;
+    padding: 5px;
+    font-size: 1.2rem;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 10px;
+    color: var(--textcolor);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form_button_important:hover {
+    background-color: var(--btn-hover);
+}
+
+#gapbox{
+    margin-bottom: 20px;
+}
+
+.txtbox, .txtboxpost {
+    background-color: var(--input-bg);
+    border: none;
+    border-radius: 10px;
+    color: var(--text-color);
+    width: 80%;
+    padding: 10px;
+    height: 45px;
+    font-size: 1rem;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.txtbox:hover,
+.txtbox:focus,
+.txtboxpost:hover,
+.txtboxpost:focus {
+    background-color: var(--input-hover);
+}
+
+.txtboxpost {
+    width: 500px;
+    height: 70px;
+    position: fixed;
+    margin: 0 20px 10px 20px;
+}
+
+.submitbutton {
+    background-color: var(--primary-color);
+    color: var(--textcolor);
+    min-width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#viewbutton{
+    height: 32px;
+    min-width: 50px;
+    padding: 10px 10px;
+}
+
+.submitbutton a{
+    color: inherit; 
+    text-decoration: none;
+}
+
+#savedesc{
+    margin-top: 20px;
+}
+
+.submitbutton:hover {
+    background-color: var(--btn-hover);
+}
+
+/* ----------------------------- */
+/* Sidebar                       */
+/* ----------------------------- */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 100vh;
+    background-color: var(--card-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    
+    z-index: 1100;
+}
+
+.sidebar a {
+    margin: 15px 0;
+}
+
+.sidebar img {
+    width: 40px;
+    height: 40px;
+    filter: brightness(0) invert(var(--iv));
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.sidebar img:hover {
+    transform: scale(1.2);
+}
+
+/* ----------------------------- */
+/* Search Bar                    */
+/* ----------------------------- */
+
+.search-form {
+    position: fixed;
+    top: 0;
+    left: 80px;
+    right: 0;
+    background-color: var(--card-bg);
+    padding: 10px 20px;
+    
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1200;
+}
+
+.search-form input[type="text"] {
+    flex-grow: 1;
+    max-width: 400px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: var(--input-bg);
+    color: var(--textcolor);
+    border: none;
+    font-size: 16px;
+}
+
+.search-form input[type="text"]::placeholder {
+    color: var(--textcolor);
+}
+
+.search-form input[type="text"]:hover,
+.search-form input[type="text"]:focus {
+    background-color: var(--input-hover);
+}
+
+.search-form input[type="submit"] {
+    background-color: var(--primary-color);
+    padding: 10px 18px;
+    border-radius: 10px;
+    color: var(--textcolor);
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.search-form input[type="submit"]:hover {
+    background-color: var(--btn-hover);
+}
+
+/* ----------------------------- */
+/* Main Content                  */
+/* ----------------------------- */
+
+.main-content {
+    margin-left: 90px;
+    padding: 80px 60px 40px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+}
+
+/* ----------------------------- */
+/* Posts                         */
+/* ----------------------------- */
+
+.post-form {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 20px 25px;
+    margin-bottom: 25px;
+    color: var(--textcolor);
+    
+}
+
+.post-form strong {
+    font-size: 1.1rem;
+}
+
+.post-form textarea {
+    width: 100%;
+    resize: none;
+    font-size: 16px;
+    padding: 12px;
+    margin-top: 8px;
+    background-color: var(--input-bg);
+    border-radius: 10px;
+    color: var(--textcolor);
+    border: none;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.post-form textarea:hover,
+.post-form textarea:focus {
+    background-color: var(--input-hover);
+}
+
+.post-form input[type="submit"][name="action"][value="Like"] {
+    margin-top: 12px;
+    background-color: var(--primary-color);
+    padding: 6px 14px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    color: var(--textcolor);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.post-form input[type="submit"][name="action"][value="Like"]:hover {
+    background-color: var(--btn-hover);
+}
+
+/* ----------------------------- */
+/* Inline Buttons                */
+/* ----------------------------- */
+
+.inline-button {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.inline-button input[type="submit"] {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    color: var(--textcolor);
+    padding: 6px 14px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.inline-button input[type="submit"]:hover {
+    background-color: var(--btn-hover);
+}
+
+/* ----------------------------- */
+/* Headings and HR               */
+/* ----------------------------- */
+
+h3 {
+    margin-bottom: 25px;
+    color: var(--textcolor)ccc;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #1a1a1a;
+    margin: 20px 0;
+}
