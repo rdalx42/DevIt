@@ -9,8 +9,8 @@
 <head>
     <title>Notifications</title>
     <meta charset="UTF-8">
-    <link rel="icon" href="./img/devit_icon.png" type="image/png" />
     <link rel="stylesheet" href="../frontend/css/style.css" />
+    <link rel="icon" href="./img/devit_icon.png" type="image/png" />
     <script src="../frontend/js/theme.js"></script>
 </head>
 
@@ -32,10 +32,6 @@
             <img src="../frontend/img/post.png" alt="Create Post" />
         </a>
 
-        <a href="../php/notifications.php">
-            <img src="../frontend/img/bellicon.png" alt="Notifications">
-        </a>
-
         <a href="../php/index.php">
             <img src="../frontend/img/exit.png" alt="Logout" />
         </a>
@@ -52,14 +48,15 @@
                 $notifications = mysqli_fetch_all($notification_result, MYSQLI_ASSOC);
 
                 echo "<h1>Notifications:</h1>";
+                
+                // arr reverse because we want the most recent notifications
 
-                foreach ($notifications as $notification) {
+                foreach (array_reverse($notifications) as $notification) {
                     echo "<div class='user-display'>
                         <p class='username'>u/" . htmlspecialchars($notification["subject"], ENT_QUOTES, 'UTF-8') .
                         ": " . htmlspecialchars($notification["content"], ENT_QUOTES, 'UTF-8') . "</p>
-                        
                     </div>";
-                }
+                }                
             } else {
                 echo "<p>No notifications found.</p>";
             }
