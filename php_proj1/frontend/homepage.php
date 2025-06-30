@@ -1,13 +1,14 @@
 <?php
 session_start();
 include("../php/db.php");
+include("../php/global/fn.php");
 ?>
 
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Home Dashboard - Dark Mode</title>
+    <title>Home Dashboard</title>
     <link rel="icon" href="./img/devit_icon.png" type="image/png" />
     <link rel="stylesheet" href="../frontend/css/style.css" />
     <script src = "../frontend/js/theme.js"></script>
@@ -66,21 +67,7 @@ include("../php/db.php");
 
             echo "<h3>Latest Posts Across All Communities</h3>";
 
-            foreach ($posts as $post) {
-                echo "<form class='post-form' method='POST'>
-                        <strong>c/</strong>" . htmlspecialchars($post["topic"], ENT_QUOTES, 'UTF-8') . "<br>
-                        <strong>Title:</strong> " . htmlspecialchars($post["title"], ENT_QUOTES, 'UTF-8') . "<br>
-                        <p><strong>Post:</strong><br>
-                        <textarea readonly rows='5'>" . htmlspecialchars($post["content"], ENT_QUOTES, 'UTF-8') . "</textarea></p>
-                        <strong>Likes:</strong> " . $post["likes"] . "<br>
-                        <strong>Creator:</strong> " . htmlspecialchars($post["creator"], ENT_QUOTES, 'UTF-8') . "<br>
-                        <input type='hidden' name='id' value='" . htmlspecialchars($post["id"], ENT_QUOTES, 'UTF-8') . "'>
-                        <input type='hidden' name='community_name' value='" . htmlspecialchars($post["topic"], ENT_QUOTES, 'UTF-8') . "'>
-                        <input type='submit' name='action' value='Like'>
-                        <input class = 'submitbutton' id = 'viewbutton' type='submit' name='action' value='View Creator'>
-                        <input type='hidden' name='creator' value='" . htmlspecialchars($post["creator"], ENT_QUOTES, 'UTF-8') . "'>
-                      </form><hr>";
-            }
+            get_posts($posts);
         }
 
 
@@ -139,35 +126,40 @@ include("../php/db.php");
 
                 echo "<h3>Posts from c/" . htmlspecialchars($community, ENT_QUOTES, 'UTF-8') . "</h3>";
 
-                foreach ($posts as $post) {
-                    echo "<form class='post-form' method='POST'>
-                            <strong>Title:</strong> " . htmlspecialchars($post["title"], ENT_QUOTES, 'UTF-8') . "<br>
-                            <p><strong>Post:</strong><br>
-                            <textarea readonly rows='5'>" . htmlspecialchars($post["content"], ENT_QUOTES, 'UTF-8') . "</textarea></p>
-                            <strong>Likes:</strong> " . $post["likes"] . "<br>
-                            <strong>Creator:</strong> " . htmlspecialchars($post["creator"], ENT_QUOTES, 'UTF-8') . "<br>
-
-                            <input type='hidden' name='id' value='" . htmlspecialchars($post["id"], ENT_QUOTES, 'UTF-8') . "'>
-                            <input type='hidden' name='community_name' value='" . htmlspecialchars($community, ENT_QUOTES, 'UTF-8') . "'>
-                            
-                            <input type='submit' name='action' value='Like'>
-                            <input class = 'submitbutton'id = 'viewbutton' type='submit' name='action' value='View Creator'>
-                            <input type='hidden' name='creator' value='" . htmlspecialchars($post["creator"], ENT_QUOTES, 'UTF-8') . "'>
-
-                          </form><hr>";
-                }
+                get_posts($posts);
 
             } elseif ($_POST["action"] == "Like") {
                 if (!isset($_SESSION['username'])) {
                     echo "You must be logged in to like posts.<br>";
+                    echo "<h3>Posts from c/" . htmlspecialchars($community, ENT_QUOTES, 'UTF-8') . "</h3>";
                     exit;
                 }
 
                 $current_user_id = $_SESSION['username'];
                 $post_id = isset($_POST["id"]) ? $_POST["id"] : '';
                 $community = $_POST['community_name'];
+                $canbreak=false;
 
-                if (empty($post_id) || empty($community)) {
+                if(empty($community)){
+                    
+                    $sql = "SELECT topic FROM posts WHERE id = '$post_id' LIMIT 1";
+                    $result = mysqli_query($post_conn, $sql);
+                    if ($result && mysqli_num_rows($result) > 0) {
+                        $row = mysqli_fetch_assoc($result);
+                        $t = $row["topic"];
+                        $posts_sql = "SELECT id, title, content, likes, creator FROM posts WHERE topic = '$t' ORDER BY id DESC LIMIT 50";
+                        $posts_result = mysqli_query($post_conn, $posts_sql);
+                        $posts = mysqli_fetch_all($posts_result, MYSQLI_ASSOC);
+
+                        // if(!empty($community)){
+                            echo "<h3>Posts from c/" . htmlspecialchars($t, ENT_QUOTES, 'UTF-8') . "</h3>";
+                            get_posts($posts);
+                        // }    
+                    }
+                    
+                }
+
+                if (empty($post_id)) {
                     echo "Invalid post ID or community name.<br>";
                     exit;
                 }
@@ -201,35 +193,23 @@ include("../php/db.php");
                         $row = mysqli_fetch_assoc($creator_result);
                         $author_name = $row["creator"];
                         $author_nameESC = mysqli_real_escape_string($conn, $author_name);
-                        $likemsg = "Someone has liked your post";
+                        $likemsg = "has liked your post";
                         
                         mysqli_query($conn, "UPDATE users SET likes = likes + 1 WHERE user = '$author_nameESC'"); 
                         mysqli_query($com_conn, "INSERT INTO notifications (`user`, `content`, `subject`) VALUES ('$author_nameESC', '$likemsg', '" . $_SESSION["username"] . "')");
                     }
 
-                    echo "Post liked successfully!<br>";
+                    
                 }
 
                 $posts_sql = "SELECT id, title, content, likes, creator FROM posts WHERE topic = '$community_esc' ORDER BY id DESC LIMIT 50";
                 $posts_result = mysqli_query($post_conn, $posts_sql);
                 $posts = mysqli_fetch_all($posts_result, MYSQLI_ASSOC);
 
-                echo "<h3>Posts from c/" . htmlspecialchars($community, ENT_QUOTES, 'UTF-8') . "</h3>";
-
-                foreach ($posts as $post) {
-                    echo "<form class='post-form' method='POST'>
-                            <strong>Title:</strong> " . htmlspecialchars($post["title"], ENT_QUOTES, 'UTF-8') . "<br>
-                            <p><strong>Post:</strong><br>
-                            <textarea readonly rows='5'>" . htmlspecialchars($post["content"], ENT_QUOTES, 'UTF-8') . "</textarea></p>
-                            <strong>Likes:</strong> " . $post["likes"] . "<br>
-                            <strong>Creator:</strong> " . htmlspecialchars($post["creator"], ENT_QUOTES, 'UTF-8') . "<br>
-                            <input type='hidden' name='id' value='" . htmlspecialchars($post["id"], ENT_QUOTES, 'UTF-8') . "'>
-                            <input type='hidden' name='community_name' value='" . htmlspecialchars($community, ENT_QUOTES, 'UTF-8') . "'>
-                            <input type='submit' name='action' value='Like'>
-                            <input class = 'submitbutton' id = 'viewbutton' type='submit' name='action' value='View Creator'>
-                            <input type='hidden' name='creator' value='" . htmlspecialchars($post["creator"], ENT_QUOTES, 'UTF-8') . "'>
-                          </form><hr>";
-                }
+                if(!empty($community)){
+                    echo "<h3>Posts from c/" . htmlspecialchars($community, ENT_QUOTES, 'UTF-8') . "</h3>";
+                    get_posts($posts);
+                }    
             }elseif($_POST["action"] == "View Creator"){
                 $post_creator = $_POST["creator"];
                 if(empty($post_creator)){
