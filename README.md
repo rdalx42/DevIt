@@ -31,9 +31,9 @@ it's like reddit but focused a lot more on programming related topics.
 
 Currently it's code needs a lot of refactoring.
 
-## Version F8D2 (Feature itteration 8 design itteration 2)
- - Added notifications
- - ![Screenshot 2025-06-29 113713](https://github.com/user-attachments/assets/9e500f29-1f33-46d6-a6ad-4a2fd2fc5a73)
+## Version F8D2.2 (Feature itteration 8 design itteration 2)
+ - Bug fixes
+ - More modular code
 
 
 Here are some snapshots;
